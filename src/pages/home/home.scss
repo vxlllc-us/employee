@@ -1,6 +1,87 @@
+@import "../../index";
+
 .home-root {
   padding: 0;
   margin: 0;
   height: 100vh;
   width: 100vw;
+
+  .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .login-container {
+      height: 50%;
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 3em;
+      animation: fadeInFromTop $animation-duration both;
+
+      .logo-container {
+        height: 250px;
+        width: 100%;
+        min-width: 300px;
+        background-image: url("../../res/assets/images/logos/logo-white.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: fadeInFromTop $animation-duration
+          calc(#{$animation-delay} * 1) both;
+      }
+
+      .button {
+        height: 68px;
+        width: 100%;
+        min-width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        box-shadow: 3px 3px 5px #eee, -3px -3px 5px #fff;
+        transition: box-shadow 0.3s ease-in-out;
+        animation: fadeInFromTop $animation-duration
+          calc(#{$animation-delay} * 2) both;
+
+        .google-logo-container {
+          height: 50%;
+          width: 18%;
+          background-image: url("../../res/assets/images/logos/google.png");
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .text-container {
+          height: 100%;
+          width: 80%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+
+        &:hover {
+          box-shadow: inset 3px 3px 5px #eee, inset -3px -3px 5px #fff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    height: 325px;
+    width: 100%;
+
+    .logo-container {
+      margin-bottom: 12px;
+    }
+  }
 }
