@@ -1,4 +1,4 @@
-import Home from "./home/home.page";
+import Landing from "./landing/landing.page";
 import Wrapper from "./wrapper/wrapper";
 
-export { Home, Wrapper };
+export { Landing, Wrapper };
