@@ -6,7 +6,8 @@ import "./landing.scss";
 import { strings } from "../../res";
 import { setSession } from "../../lib";
 import { RootState } from "../../lib/redux";
-import { SessionActionTypes, Session } from "../../lib/redux/modules/user";
+import { Session } from "../../lib/redux/modules/user";
+import * as module from "./landing.module";
 
 interface State {
   loading: boolean;
@@ -17,6 +18,10 @@ class Landing extends React.Component<PropsFromRedux, State> {
     loading: false,
     user: null
   };
+
+  componentDidMount() {
+    module.sessionListener();
+  }
 
   onLogin = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
