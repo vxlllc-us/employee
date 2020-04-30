@@ -4,23 +4,32 @@ import { connect, ConnectedProps } from "react-redux";
 
 import "./landing.scss";
 import { strings } from "../../res";
-import { setSession } from "../../lib";
+import { setSession, config } from "../../lib";
 import { RootState } from "../../lib/redux";
 import { Session } from "../../lib/redux/modules/user";
-import * as module from "./landing.module";
+import { RouteComponentProps } from "react-router-dom";
 
 interface State {
   loading: boolean;
   user: UserInfo | null;
 }
-class Landing extends React.Component<PropsFromRedux, State> {
+type Props = RouteComponentProps<{}> & PropsFromRedux;
+class Landing extends React.Component<Props, State> {
   state: State = {
     loading: false,
     user: null
   };
 
+  componentDidUpdate() {
+    if (this.props.runtime.session.active) {
+      this.props.history.push(config.routes.home);
+    }
+  }
+
   componentDidMount() {
-    module.sessionListener();
+    if (this.props.runtime.session.active) {
+      this.props.history.push(config.routes.home);
+    }
   }
 
   onLogin = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -35,6 +44,7 @@ class Landing extends React.Component<PropsFromRedux, State> {
           active: true,
           user
         });
+        this.props.history.push(config.routes.home);
         this.setState({
           loading: false,
           user

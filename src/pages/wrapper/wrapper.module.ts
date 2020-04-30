@@ -1,5 +1,7 @@
-import firebase from "firebase";
+import * as firebase from "firebase";
 import "firebase/firestore";
+import { store, setSession } from "../../lib";
+import * as wrapperModule from "../wrapper/wrapper.module";
 
 const {
   REACT_APP_API_KEY,
@@ -11,7 +13,7 @@ const {
   REACT_APP_APP_ID
 } = process.env;
 
-export function setup() {
+export async function setup() {
   if (!firebase.apps.length) {
     firebase.initializeApp({
       apiKey: REACT_APP_API_KEY,
@@ -23,4 +25,27 @@ export function setup() {
       appId: REACT_APP_APP_ID
     });
   }
+}
+
+export async function sessionListener(): Promise<void> {
+  if (!firebase.apps.length) {
+    wrapperModule.setup();
+  }
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      store.dispatch(
+        setSession({
+          active: true,
+          user
+        })
+      );
+    } else {
+      store.dispatch(
+        setSession({
+          active: false,
+          user: null
+        })
+      );
+    }
+  });
 }

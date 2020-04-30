@@ -4,6 +4,8 @@ $primary: #fbfbfb;
 $secondary: #343d51;
 $primary-text: #0a0a0a;
 $secondary-text: #fbfbfb;
+$box-shadow: 3px 3px 5px #eee, -3px -3px 5px #fff;
+$box-shadow-inset: inset 3px 3px 5px #eee, inset -3px -3px 5px #fff;
 
 @keyframes fadeInFromTop {
   from {
@@ -34,6 +36,22 @@ body {
   box-sizing: border-box;
   scroll-behavior: smooth;
   background: $primary;
+}
+
+button {
+  height: 68px;
+  box-shadow: $box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: transparent;
+
+  &:hover {
+    box-shadow: $box-shadow-inset;
+  }
 }
 
 * {

@@ -43,7 +43,7 @@
         align-items: center;
         justify-content: space-between;
         cursor: pointer;
-        box-shadow: 3px 3px 5px #eee, -3px -3px 5px #fff;
+        box-shadow: $box-shadow;
         transition: box-shadow 0.3s ease-in-out;
         animation: fadeInFromTop $animation-duration
           calc(#{$animation-delay} * 2) both;
@@ -68,7 +68,7 @@
         }
 
         &:hover {
-          box-shadow: inset 3px 3px 5px #eee, inset -3px -3px 5px #fff;
+          box-shadow: $box-shadow-inset;
         }
       }
     }

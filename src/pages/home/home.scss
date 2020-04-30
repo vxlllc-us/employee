@@ -1,0 +1,23 @@
+@import "../../index";
+
+.home-root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  button {
+    width: 50%;
+    font-size: 1.5em;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
