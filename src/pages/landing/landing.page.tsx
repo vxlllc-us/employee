@@ -1,14 +1,18 @@
 import React from "react";
 import { auth, UserInfo } from "firebase";
+import { connect, ConnectedProps } from "react-redux";
 
 import "./landing.scss";
 import { strings } from "../../res";
+import { setSession } from "../../lib";
+import { RootState } from "../../lib/redux";
+import { SessionActionTypes, Session } from "../../lib/redux/modules/user";
 
 interface State {
   loading: boolean;
   user: UserInfo | null;
 }
-export default class Landing extends React.Component<any, State> {
+class Landing extends React.Component<PropsFromRedux, State> {
   state: State = {
     loading: false,
     user: null
@@ -22,7 +26,10 @@ export default class Landing extends React.Component<any, State> {
       .then((result: any) => {
         const token = result.credential.accessToken;
         const user: UserInfo = result.user;
-        console.log("user: ", user.displayName);
+        this.props.setSession({
+          active: true,
+          user
+        });
         this.setState({
           loading: false,
           user
@@ -57,3 +64,17 @@ export default class Landing extends React.Component<any, State> {
     );
   }
 }
+
+const mapStateToProps = (state: RootState): RootState => {
+  return state;
+};
+
+const mapDispatchToProps = {
+  setSession: (session: Session) => setSession(session)
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Landing);

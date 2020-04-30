@@ -1,3 +1,4 @@
 import config from "./config";
+import { store, setSession } from "./redux";
 
-export { config };
+export { config, setSession, store };
