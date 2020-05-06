@@ -64,7 +64,7 @@ class Landing extends React.Component<Props, State> {
   render() {
     return (
       <div className="home-root">
-        <div className="container">
+        <div className="custom-container">
           <div className="login-container">
             <div className="logo-container"></div>
             <div onClick={this.onLogin} className="button">

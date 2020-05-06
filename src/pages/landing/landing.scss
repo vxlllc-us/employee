@@ -6,7 +6,7 @@
   height: 100vh;
   width: 100vw;
 
-  .container {
+  .custom-container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -14,7 +14,6 @@
     justify-content: center;
 
     .login-container {
-      height: 50%;
       width: 30%;
       display: flex;
       align-items: center;
@@ -33,6 +32,7 @@
         background-repeat: no-repeat;
         animation: fadeInFromTop $animation-duration
           calc(#{$animation-delay} * 1) both;
+        margin-bottom: 2em;
       }
 
       .button {
